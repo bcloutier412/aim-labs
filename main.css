@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  cursor: crosshair;
+}
+body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-size: 40px 40px;
+  background-image: radial-gradient(circle, #000000 1px, rgba(0, 0, 0, 0) 1px);
+}
+#horizontal-line {
+    position: absolute;
+    border-bottom: 3px solid red;
+    height: 70px;
+    width: 100%;
+}
+#vertical-line {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-right: 3px solid red;
+}
