@@ -70,9 +70,26 @@ menu {
   border-bottom-right-radius: 7px;
 }
 
+main {
+  height: 90%;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
 
+main .target {
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  border-radius: 50px;
+  background: #ff4d6d;
+  box-shadow: inset 0 0 15px rgba(164, 19, 60, .5);
+  position: absolute;
+}
 
-
+.display-off {
+  display: none;
+}
 
 #smallerscreen {
   display: none;
