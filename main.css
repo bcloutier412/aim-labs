@@ -31,19 +31,24 @@ body {
 }
 header {
   margin-top: 19px;
+  position: relative;
 }
 #header-text {
   font-size: 2rem;
   font-weight: 700;
   /* padding: 8px 32px; */
   background-color: white;
+  color: #4a4e69;
+  text-shadow: 1.2px 1.2px 0px #14213d;
 }
 
 .horizontal-line {
   height: 2px;
   background-color: #006d77;
 }
-
+#game-stats {
+  text-align: center;
+}
 menu {
   width: 24%;
   margin: 20vh auto;
@@ -70,6 +75,14 @@ menu {
   border-bottom-right-radius: 7px;
 }
 
+#target-size-select {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+}
+
 main {
   height: 90%;
   width: 80%;
@@ -78,12 +91,13 @@ main {
 }
 
 main .target {
-  height: 50px;
-  width: 50px;
+  /* height: 48px;
+  width: 48px; */
   border: 1px solid black;
   border-radius: 50px;
   background: #ff4d6d;
   box-shadow: inset 0 0 15px rgba(164, 19, 60, .5);
+  box-shadow: 2px 2px 0px #14213d;
   position: absolute;
 }
 
