@@ -27,31 +27,31 @@
           <div class="col-2 text-center" id="header-text">Dino's Aim Labs</div>
           <div class="col-4 horizontal-line"></div>
         </div>
-        <div class="display-off" id="game-stats"><span id="time">3:00</span> | <span id="score">0</span> | <span id="accuracy">0%</span></div>
+        <div class="display-off" id="game-stats"><span id="time">3:00</span> | <span id="score">0</span> | <span id="accuracy">0</span>%</div>
       </header>
       <menu>
         <div class="container-fluid" id="menu-btns">
           <div class="row">
-            <div class="col text-center menu-btn py-2" id="start-btn">START</div>
+            <div class="col text-center menu-btn py-2 start-btn" id="start-btn">START</div>
           </div>
           <div class="row">
             <div class="col text-center menu-btn py-2" id="target-size-btn">
               <select name="" id="target-size-select">
                 <option value="medium">TARGET SIZE</option>
-                <option value="hard">HARD</option>
+                <option value="hard">SMALL</option>
                 <option value="medium">MEDIUM</option>
-                <option value="easy">EASY</option>
+                <option value="easy">LARGE</option>
               </select>
             </div>
           </div>
           <div class="row">
-            <div class="col text-center menu-btn py-2" id="color-btn">COLOR</div>
+            <div class="col text-center menu-btn py-2" id="color-btn">COLOR<input type="color" id="color" value="#ff4d6d"/></div>
           </div>
           <div class="row">
             <div class="col text-center menu-btn time-btn py-2" id="time-btn">3 MINUTES</div>
           </div>
           <div class="row">
-            <div class="col text-center menu-btn py-2" id="stats-btn">STATS</div>
+            <div class="col text-center menu-btn py-2 stat-btn" id="stats-btn">STATS</div>
           </div>
         </div>
       </menu>
