@@ -105,7 +105,12 @@ main .target {
   box-shadow: 2px 2px 0px rgba(20, 33, 61, .7);
   position: absolute;
 }
-
+#countdown {
+  position: absolute;
+  top: 30%;
+  left: 47.5%;
+  font-size: 10rem;
+}
 .display-off {
   display: none;
 }
