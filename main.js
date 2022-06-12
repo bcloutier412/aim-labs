@@ -7,7 +7,7 @@ let scoreInt = 0;
 let accuracy = 0;
 let minutes = 3;
 let seconds = '00';
-let inPlay = true;
+let inPlay = false;
 
 const menu = document.querySelector('menu');
 const startBtn = document.querySelector('#start-btn');
