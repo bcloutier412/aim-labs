@@ -8,6 +8,7 @@ let accuracy = 0;
 let minutes = 3;
 let seconds = '00';
 let inPlay = false;
+let audioNum = 0;
 
 const menu = document.querySelector('menu');
 const startBtn = document.querySelector('#start-btn');
@@ -21,6 +22,27 @@ const score = document.querySelector('#score');
 const minutesObj = document.querySelector('#minutes');
 const secondsObj = document.querySelector('#seconds');
 const countdown = document.querySelector('#countdown');
+// const audio = new Audio('audio/firecracker.mp3')
+const audioArray = []
+createAudioArray()
+function createAudioArray() {
+    for (let i = 0; i < 7; i++) {
+        const newAudioObj = {
+            audio: new Audio('audio/firecracker.mp3'),
+            isPlaying: false
+        }
+        audioArray.push(newAudioObj)
+    }
+}
+
+function playAudio() {
+    audioArray[audioNum].audio.play();
+    if (audioNum === 6) {
+        audioNum = 0;
+    } else {
+        audioNum += 1;
+    }
+}
 
 function setDisplayToDefualt(element) {
     element.classList.remove('display-off')
@@ -48,12 +70,16 @@ function setMinNSec() {
     minutesObj.textContent = minutes
     secondsObj.textContent = seconds
 }
-//start Timer function
+//Recursive Timer Function
 function startTimer() {
     if (seconds === 0 && minutes === 0) {
         inPlay = false;
-        console.log(totalShots)
-        console.log(targetsHit)
+        countdown.style.left = '36%';
+        countdown.textContent = 'STOP!'
+        countdown.classList.remove('display-off');
+        setTimeout(() => {
+            countdown.classList.add('display-off');
+        },1000)
         return
     } else if (seconds === 0) {
         setTimeout(() => {
@@ -76,7 +102,7 @@ function startTimer() {
     }
 }
 //Countdown function (1....2....3....GO!)
-function startCountdown() {
+function startCountdownandTimer() {
     countdown.classList.remove('display-off');
     setTimeout(() => {
         countdown.style.left = '47%';
@@ -91,37 +117,11 @@ function startCountdown() {
                 setTimeout(() => {
                     inPlay = true;
                     countdown.classList.add('display-off');
-                    minutes = 2;
-                    seconds = 59;
+                    minutes = 3;
+                    seconds = 0;
                     minutesObj.textContent = minutes;
-                    secondsObj.textContent = seconds;
-                    startTimer()
-                    // const timer = setInterval(() => {
-                    //     if (minutes !== 0 && seconds !== 0){
-                    //         seconds -= 1;
-                    //     }
-                    //     seconds -= 1;
-                    //     if (seconds === 0) {
-                    //         secondsObj.textContent = '00';
-                    //         setTimeout(() => {
-                    //             if (minutes === 0) {
-                    //                 clearInterval(timer)
-                    //                 console.log('hello')
-                    //             } else {
-                    //                 minutes -= 1;
-                    //                 minutesObj.textContent = minutes;
-                    //                 seconds = 59;
-                    //                 secondsObj.textContent = seconds;
-                    //             }
-                    //         }, 1000)
-
-                    //     }
-                    //     else if (seconds < 10) {
-                    //         secondsObj.textContent = '0' + seconds;
-                    //     } else {
-                    //         secondsObj.textContent = seconds;
-                    //     }
-                    // }, 1000)
+                    secondsObj.textContent = '00';
+                    startTimer();
                 }, 1000);
             }, 1000);
         }, 1000);
@@ -148,6 +148,7 @@ function startGame() {
         //adding click event listener. Resets location of target and increases clicks.
         newTarget.addEventListener('click', function (e) {
             if (inPlay) {
+                playAudio()
                 totalShots += 1;
                 targetsHit += 1;
                 calcAccuracy()
@@ -165,12 +166,12 @@ startBtn.addEventListener('click', () => {
     setDisplayToNone(menu)
     startGame()
     setMinNSec()
-    startCountdown()
+    startCountdownandTimer()
     setDisplayToDefualt(gameStats)
 })
 
 main.addEventListener('click', function (e) {
-    if (inPlay){
+    if (inPlay) {
         totalShots += 1;
         calcAccuracy()
     }
