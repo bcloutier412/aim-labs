@@ -82,6 +82,13 @@ menu {
   border: none;
   background-color: transparent;
 }
+#minutes-select {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+}
 #color {
   width: 30px;
   height: 29px;

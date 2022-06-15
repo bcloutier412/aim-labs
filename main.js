@@ -5,7 +5,7 @@ let totalShots = 0;
 let targetsHit = 0;
 let scoreInt = 0;
 let accuracy = 0;
-let minutes = 3;
+let minutes = 1;
 let seconds = '00';
 let inPlay = false;
 let audioNum = 0;
@@ -21,6 +21,7 @@ const accuracyPercent = document.querySelector('#accuracy');
 const score = document.querySelector('#score');
 const minutesObj = document.querySelector('#minutes');
 const secondsObj = document.querySelector('#seconds');
+const minutesSelect = document.querySelector('#minutes-select')
 const countdown = document.querySelector('#countdown');
 // const audio = new Audio('audio/firecracker.mp3')
 const audioArray = []
@@ -117,7 +118,6 @@ function startCountdownandTimer() {
                 setTimeout(() => {
                     inPlay = true;
                     countdown.classList.add('display-off');
-                    minutes = 3;
                     seconds = 0;
                     minutesObj.textContent = minutes;
                     secondsObj.textContent = '00';
@@ -191,4 +191,14 @@ targetSizeSelect.addEventListener("change", function () {
 
 colorPicker.addEventListener('input', () => {
     targetColor = colorPicker.value
+})
+
+minutesSelect.addEventListener('change', function () {
+    if (this.value === '1') {
+        minutes = 1;
+    } else if (this.value === '2') {
+        minutes = 2;
+    } else if (this.value === '3') {
+        minutes = 3;
+    }
 })
