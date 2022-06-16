@@ -131,17 +131,45 @@ main .target {
 }
 #leaderboard {
   margin: 0px auto;
+  overflow-y: hidden;
+}
+#leaderboard:hover {
+  overflow-y: overlay;
+}
+#leaderboard::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+#leaderboard::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+#leaderboard::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+#leaderboard::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, .5);
 }
 #leaderboard header{
   text-align: center;
   width: 50%;
   margin-top: 10px;
   margin: 10px auto;
-  border-bottom: 1px solid#83c5be;
+  border-bottom: 1px solid #83c5be;
 }
 #leaderboard ul li {
   list-style: none;
   display: block;
+  width: 90%;
+  margin: 3px auto;
+  text-align: center;
+}
+#leaderboard ul li:nth-child(odd) {
+  background: #83c5be;
+}
+#leaderboard ul li:nth-child(even) {
+  background: #b8dedc;
 }
 #countdown {
   position: absolute;
