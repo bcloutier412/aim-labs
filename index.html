@@ -27,12 +27,17 @@
           <div class="col-2 text-center" id="header-text">Dino's Aim Labs</div>
           <div class="col-4 horizontal-line"></div>
         </div>
-        <div class="display-off" id="game-stats"><span id="minutes">3</span>:<span id="seconds">00</span> | <span id="score">0</span> | <span id="accuracy">0</span>%</div>
+        <div class="display-off" id="game-stats">
+          <span id="minutes">3</span>:<span id="seconds">00</span> |
+          <span id="score">0</span> | <span id="accuracy">0</span>%
+        </div>
       </header>
       <menu>
         <div class="container-fluid" id="menu-btns">
           <div class="row">
-            <div class="col text-center menu-btn py-2 start-btn" id="start-btn">START</div>
+            <div class="col text-center menu-btn py-2 start-btn" id="start-btn">
+              START
+            </div>
           </div>
           <div class="row">
             <div class="col text-center menu-btn py-2" id="target-size-btn">
@@ -45,7 +50,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="col text-center menu-btn py-2" id="color-btn">COLOR<input type="color" id="color" value="#ff4d6d"/></div>
+            <div class="col text-center menu-btn py-2" id="color-btn">
+              COLOR<input type="color" id="color" value="#ff4d6d" />
+            </div>
           </div>
           <div class="row">
             <div class="col text-center menu-btn time-btn py-2" id="time-btn">
@@ -57,13 +64,24 @@
             </div>
           </div>
           <div class="row">
-            <div class="col text-center menu-btn py-2 stat-btn" id="stats-btn">STATS</div>
+            <div class="col text-center menu-btn py-2 stat-btn" id="stats-btn">
+              STATS
+            </div>
           </div>
         </div>
       </menu>
-      <main>
-      </main>
+      <main></main>
       <div id="countdown" class="display-off">3</div>
+      <div id="endgame-stats-container" class="display-off">
+        <div id="leaderboard">
+          <header>LEADERBOARD</header>
+          <ul class="p-0">
+            <li>hi</li>
+          </ul>
+        </div>
+        <canvas></canvas>
+        <div id="endgame-stats">Total Amount of shots, amount of misses, accuracy, longest streak, points</div>
+      </div>
     </div>
     <div id="smallerscreen">
       This Screensize is not supported please open application via

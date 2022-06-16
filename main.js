@@ -23,6 +23,7 @@ const minutesObj = document.querySelector('#minutes');
 const secondsObj = document.querySelector('#seconds');
 const minutesSelect = document.querySelector('#minutes-select')
 const countdown = document.querySelector('#countdown');
+const endGameStatsContainer = document.querySelector('#endgame-stats-container')
 // const audio = new Audio('audio/firecracker.mp3')
 const audioArray = []
 createAudioArray()
@@ -75,12 +76,17 @@ function setMinNSec() {
 function startTimer() {
     if (seconds === 0 && minutes === 0) {
         inPlay = false;
-        countdown.style.left = '36%';
+        countdown.style.left = '38%';
         countdown.textContent = 'STOP!'
         countdown.classList.remove('display-off');
         setTimeout(() => {
             countdown.classList.add('display-off');
-        },1000)
+            main.classList.add('blur-effect')
+            setTimeout(() => {
+                endGameStatsContainer.classList.remove('display-off');
+                endGameStatsContainer.classList.add('display-flex')
+            }, 1000);
+        },1000);
         return
     } else if (seconds === 0) {
         setTimeout(() => {
