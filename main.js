@@ -11,6 +11,7 @@ let inPlay = false;
 let audioNum = 0;
 
 const menu = document.querySelector('menu');
+const menubtns = document.querySelector('#menu-btns')
 const startBtn = document.querySelector('#start-btn');
 const targetSizeBtn = document.querySelector('#target-size-btn');
 const main = document.querySelector('main');
@@ -24,6 +25,8 @@ const secondsObj = document.querySelector('#seconds');
 const minutesSelect = document.querySelector('#minutes-select')
 const countdown = document.querySelector('#countdown');
 const endGameStatsContainer = document.querySelector('#endgame-stats-container')
+
+
 // const audio = new Audio('audio/firecracker.mp3')
 const audioArray = []
 createAudioArray()
@@ -208,3 +211,11 @@ minutesSelect.addEventListener('change', function () {
         minutes = 3;
     }
 })
+
+for (let element of menubtns.children) {
+    element.firstElementChild.addEventListener('mouseenter', () => {
+        let menubtnaudio = new Audio('audio/menubtn.mp3')
+        menubtnaudio.volume = .05;
+        menubtnaudio.play()
+    })
+}
