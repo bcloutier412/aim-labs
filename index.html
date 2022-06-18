@@ -74,7 +74,7 @@
       <div id="countdown" class="display-off">3</div>
       <div id="endgame-stats-container" class="display-off">
         <div id="leaderboard">
-          <header>LEADERBOARD</header>
+          <header><b>LEADERBOARD</b></header>
           <ul class="p-0">
             <li>Dino: 124007pts - 97.6%</li>
             <li>Dino: 122521pts - 98.4%</li>
@@ -91,12 +91,20 @@
           </ul>
         </div>
         <canvas></canvas>
-        <div id="endgame-stats">Total Amount of shots, amount of misses, accuracy, longest streak, points</div>
+        <div id="endgame-stats">
+          <header><b>STATS</b></header>
+          <ul class="px-0">
+            <li><b>Shots: </b><span id="total-shots">0</span></li>
+            <li><b>Misses: </b><span id="total-misses">0</span></li>
+            <li><b>Accuracy: </b><span id="accuracy-stat">0</span>%</li>
+            <li><b>Points: </b><span id="total-points">160000</span></li>
+          </ul>
+        </div>
       </div>
     </div>
     <div id="smallerscreen">
-      This Screensize is not supported please open application via
-      desktop/laptop
+      This Screensize is not supported. Please open application via
+      desktop/laptop/Tablet
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

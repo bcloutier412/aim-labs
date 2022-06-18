@@ -22,16 +22,20 @@ const accuracyPercent = document.querySelector('#accuracy');
 const score = document.querySelector('#score');
 const minutesObj = document.querySelector('#minutes');
 const secondsObj = document.querySelector('#seconds');
-const minutesSelect = document.querySelector('#minutes-select')
+const minutesSelect = document.querySelector('#minutes-select');
 const countdown = document.querySelector('#countdown');
-const endGameStatsContainer = document.querySelector('#endgame-stats-container')
+const endGameStatsContainer = document.querySelector('#endgame-stats-container');
+const totalShotsStat = document.querySelector('#total-shots');
+const totalMissesStat = document.querySelector('#total-misses');
+const accuracyStat = document.querySelector('#accuracy-stat')
+const totalPointsStat = document.querySelector('#total-points')
 
 
 // const audio = new Audio('audio/firecracker.mp3')
 const audioArray = []
 createAudioArray()
 function createAudioArray() {
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 5; i++) {
         const newAudioObj = {
             audio: new Audio('audio/firecracker.mp3'),
             isPlaying: false
@@ -42,7 +46,7 @@ function createAudioArray() {
 
 var playTargetAudio = function() {
     audioArray[audioNum].audio.play();
-    audioNum === 6 ? (audioNum = 0) : (audioNum += 1)
+    audioNum === 4 ? (audioNum = 0) : (audioNum += 1)
 }
 
 var setDisplayToDefualt = function(element) {
@@ -60,7 +64,7 @@ var getRandomNum = function(highestNumber) {
 var calcAccuracy = function() {
     accuracy = (targetsHit / totalShots) * 100;
     accuracy = (accuracy.toString()).slice(0, 4)
-    accuracyPercent.textContent = `${accuracy}`
+    accuracyPercent.textContent = accuracy
 }
 var calcScore = function() {
     scoreInt += 1000 * (accuracy / 100);
@@ -71,6 +75,12 @@ var setMinNSec = function() {
     minutesObj.textContent = minutes
     secondsObj.textContent = seconds
 }
+var setEndGameStats = function() {
+    totalShotsStat.textContent = totalShots;
+    totalMissesStat.textContent = totalShots - targetsHit;
+    accuracyStat.textContent = accuracy;
+    totalPointsStat.textContent = scoreInt
+}
 //Recursive Timer Function
 var startTimer = function() {
     if (seconds === 0 && minutes === 0) {
@@ -79,6 +89,7 @@ var startTimer = function() {
         audioObjStop.play()
         countdown.textContent = 'STOP!'
         setDisplayToDefualt(countdown)
+        setEndGameStats()
         setTimeout(() => {
             setDisplayToNone(countdown)
             main.classList.add('blur-effect')
@@ -130,7 +141,8 @@ var startCountdownandTimer = function() {
                 setTimeout(() => {
                     inPlay = true;
                     setDisplayToNone(countdown)
-                    seconds = 0;
+                    minutes = 0;
+                    seconds = 1;
                     minutesObj.textContent = minutes;
                     secondsObj.textContent = '00';
                     startTimer();

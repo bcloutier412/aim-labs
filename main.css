@@ -171,6 +171,32 @@ main .target {
 #leaderboard ul li:nth-child(even) {
   background: #b8dedc;
 }
+#endgame-stats {
+  letter-spacing: 2px;
+}
+#endgame-stats header {
+  text-align: center;
+  width: 50%;
+  margin-top: 10px;
+  margin: 10px auto;
+  border-bottom: 1px solid #83c5be;
+}
+#endgame-stats ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#endgame-stats ul li {
+  list-style: none;
+  display: inline-block;
+  text-align: center;
+  width: 50%;
+  margin-top: 10%;
+  margin-bottom: 15%;
+}
+#endgame-stats ul li span {
+  color: #006d77;
+}
 #countdown {
   position: absolute;
   font-size: 10rem;
