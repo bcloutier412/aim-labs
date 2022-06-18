@@ -40,53 +40,50 @@ function createAudioArray() {
     }
 }
 
-function playAudio() {
+var playTargetAudio = function() {
     audioArray[audioNum].audio.play();
-    if (audioNum === 6) {
-        audioNum = 0;
-    } else {
-        audioNum += 1;
-    }
+    audioNum === 6 ? (audioNum = 0) : (audioNum += 1)
 }
 
-function setDisplayToDefualt(element) {
+var setDisplayToDefualt = function(element) {
     element.classList.remove('display-off')
 }
 //Sets display to None
-function setDisplayToNone(element) {
+var setDisplayToNone = function(element) {
     element.classList.add('display-off')
 }
 //generates random number from 0 - highest number of targets that can fit in the screensize
-function getRandomNum(highestNumber) {
+var getRandomNum = function(highestNumber) {
     return Math.floor(Math.random() * (highestNumber - 0)) + 0
 }
 //calculate accuracy
-function calcAccuracy() {
+var calcAccuracy = function() {
     accuracy = (targetsHit / totalShots) * 100;
     accuracy = (accuracy.toString()).slice(0, 4)
     accuracyPercent.textContent = `${accuracy}`
 }
-function calcScore() {
+var calcScore = function() {
     scoreInt += 1000 * (accuracy / 100);
     score.textContent = scoreInt
 }
 //Sets the minutes and seconds
-function setMinNSec() {
+var setMinNSec = function() {
     minutesObj.textContent = minutes
     secondsObj.textContent = seconds
 }
 //Recursive Timer Function
-function startTimer() {
+var startTimer = function() {
     if (seconds === 0 && minutes === 0) {
-        inPlay = false;
-        countdown.style.left = '38%';
+        inPlay = false; 
+        let audioObjStop = new Audio('audio/go.mp3')
+        audioObjStop.play()
         countdown.textContent = 'STOP!'
-        countdown.classList.remove('display-off');
+        setDisplayToDefualt(countdown)
         setTimeout(() => {
-            countdown.classList.add('display-off');
+            setDisplayToNone(countdown)
             main.classList.add('blur-effect')
             setTimeout(() => {
-                endGameStatsContainer.classList.remove('display-off');
+                setDisplayToDefualt(endGameStatsContainer)
                 endGameStatsContainer.classList.add('display-flex')
             }, 1000);
         },1000);
@@ -112,21 +109,27 @@ function startTimer() {
     }
 }
 //Countdown function (1....2....3....GO!)
-function startCountdownandTimer() {
-    countdown.classList.remove('display-off');
+var startCountdownandTimer = function() {
+    setDisplayToDefualt(countdown)
+    let audioObj = new Audio('audio/countdown.mp3')
+    let audioObjGo = new Audio('audio/go.mp3')
+    audioObj.volume = .2;
+    audioObjGo.volume = .4;
+    audioObj.play()
     setTimeout(() => {
-        countdown.style.left = '47%';
         let currentTime = parseInt(countdown.textContent);
         countdown.textContent = currentTime - 1;
+        audioObj.play()
         setTimeout(() => {
             let currentTime = parseInt(countdown.textContent);
             countdown.textContent = currentTime - 1;
+            audioObj.play()
             setTimeout(() => {
-                countdown.style.left = '42.1%';
                 countdown.textContent = 'GO!';
+                audioObjGo.play()
                 setTimeout(() => {
                     inPlay = true;
-                    countdown.classList.add('display-off');
+                    setDisplayToNone(countdown)
                     seconds = 0;
                     minutesObj.textContent = minutes;
                     secondsObj.textContent = '00';
@@ -137,12 +140,12 @@ function startCountdownandTimer() {
     }, 1000);
 }
 //Set the targets top and left
-function resetLocation(element, numOfCols, numOfRows) {
+var resetLocation = function(element, numOfCols, numOfRows) {
     element.style.top = (`${getRandomNum(numOfRows) * targetDiameter}px`)
     element.style.left = (`${getRandomNum(numOfCols) * targetDiameter}px`)
 }
 //creates/appends game targets and generates event listeners for game mechanics
-function startGame() {
+var startGame = function() {
     const numOfCols = Math.floor((window.innerWidth * .8) / targetDiameter)
     const numOfRows = Math.floor((window.innerHeight * .9) / targetDiameter)
 
@@ -157,7 +160,7 @@ function startGame() {
         //adding click event listener. Resets location of target and increases clicks.
         newTarget.addEventListener('click', function (e) {
             if (inPlay) {
-                playAudio()
+                playTargetAudio()
                 totalShots += 1;
                 targetsHit += 1;
                 calcAccuracy()
@@ -214,8 +217,8 @@ minutesSelect.addEventListener('change', function () {
 
 for (let element of menubtns.children) {
     element.firstElementChild.addEventListener('mouseenter', () => {
-        let menubtnaudio = new Audio('audio/menubtn.mp3')
-        menubtnaudio.volume = .05;
-        menubtnaudio.play()
+        let audioObj = new Audio('audio/menubtn.mp3')
+        audioObj.volume = .05;
+        audioObj.play()
     })
 }
