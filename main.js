@@ -61,12 +61,12 @@ var getRandomNum = function(highestNumber) {
     return Math.floor(Math.random() * (highestNumber - 0)) + 0
 }
 //calculate accuracy
-var calcAccuracy = function() {
+var setAccuracy = function() {
     accuracy = (targetsHit / totalShots) * 100;
     accuracy = (accuracy.toString()).slice(0, 4)
     accuracyPercent.textContent = accuracy
 }
-var calcScore = function() {
+var setScore = function() {
     scoreInt += 1000 * (accuracy / 100);
     score.textContent = scoreInt
 }
@@ -175,8 +175,8 @@ var startGame = function() {
                 playTargetAudio()
                 totalShots += 1;
                 targetsHit += 1;
-                calcAccuracy()
-                calcScore()
+                setAccuracy()
+                setScore()
                 resetLocation(this, numOfCols, numOfRows)
                 e.stopPropagation();
             }
@@ -197,7 +197,7 @@ startBtn.addEventListener('click', () => {
 main.addEventListener('click', function (e) {
     if (inPlay) {
         totalShots += 1;
-        calcAccuracy()
+        setAccuracy()
     }
 })
 

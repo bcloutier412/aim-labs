@@ -117,20 +117,31 @@ main .target {
 #endgame-stats-container {
   position: absolute;
   justify-content: center;
-  top: 42.5%;
+  top: 46%;
   /* left: 25.45%; */
   left: 50%;
   transform: translate(-50%, -50%);
   gap: 20px;
   transition: display 1s;
+  width: 940px;
+  flex-wrap: wrap;
 }
 #endgame-stats-container div, canvas {
   height: 300px;
   width: 300px;
   border: 3px solid #b8dedc;
+  flex-basis: 30%;
+}
+#endgame-stats-container button {
+  background-color: transparent;
+  padding: 5px 30px;
+  border: 2px solid #006d77;
+}
+#endgame-stats-container button:hover {
+  background-color: #83c5be;
+  cursor: crosshair;
 }
 #leaderboard {
-  margin: 0px auto;
   overflow-y: hidden;
 }
 #leaderboard:hover {
