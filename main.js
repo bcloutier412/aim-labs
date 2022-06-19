@@ -29,6 +29,8 @@ const totalShotsStat = document.querySelector('#total-shots');
 const totalMissesStat = document.querySelector('#total-misses');
 const accuracyStat = document.querySelector('#accuracy-stat')
 const totalPointsStat = document.querySelector('#total-points')
+const continueBtn = document.querySelector('#continue-btn');
+
 
 
 // const audio = new Audio('audio/firecracker.mp3')
@@ -50,7 +52,7 @@ var playTargetAudio = function() {
 }
 
 var setDisplayToDefualt = function(element) {
-    element.classList.remove('display-off')
+    element.className = ''
 }
 //Sets display to None
 var setDisplayToNone = function(element) {
@@ -141,8 +143,7 @@ var startCountdownandTimer = function() {
                 setTimeout(() => {
                     inPlay = true;
                     setDisplayToNone(countdown)
-                    minutes = 0;
-                    seconds = 1;
+                    seconds = 0;
                     minutesObj.textContent = minutes;
                     secondsObj.textContent = '00';
                     startTimer();
@@ -184,8 +185,34 @@ var startGame = function() {
         main.appendChild(newTarget)
     }
 }
+var removeAllTargets = function() {
+    for (let i = main.childNodes.length - 1; i >= 0; i--) {
+        main.removeChild(main.childNodes[i]);
+    }
+}
+var resetGameVariables = function() {
+    totalShots = 0;
+    targetsHit = 0;
+    scoreInt = 0;
+    accuracy = 0;
+    minutes = 1;
+    seconds = '00';
+    inPlay = false;
+    audioNum = 0;
+    countdown.textContent = '3'
+    accuracyPercent.textContent = '0'
+    score.textContent = '0'
+}
+var resetToGameMenu = function() {
+    removeAllTargets()
+    setDisplayToDefualt(endGameStatsContainer)
+    setDisplayToNone(endGameStatsContainer)
+    setDisplayToDefualt(menu)
+    setDisplayToNone(gameStats)
+    setDisplayToDefualt(main)
+    resetGameVariables()
 
-
+}
 startBtn.addEventListener('click', () => {
     setDisplayToNone(menu)
     startGame()
@@ -234,3 +261,5 @@ for (let element of menubtns.children) {
         audioObj.play()
     })
 }
+
+continueBtn.addEventListener('click', resetToGameMenu)
