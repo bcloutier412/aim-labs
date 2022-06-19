@@ -70,7 +70,7 @@ menu {
   border-top-right-radius: 7px;
 }
 
-.stat-btn {
+.time-btn {
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
 }
@@ -123,19 +123,20 @@ main .target {
   transform: translate(-50%, -50%);
   gap: 20px;
   transition: display 1s;
-  width: 940px;
+  width: 1323px;
   flex-wrap: wrap;
 }
 #endgame-stats-container div, canvas {
-  height: 300px;
-  width: 300px;
+  height: 400px;
+  width: 400px;
   border: 3px solid #b8dedc;
   flex-basis: 30%;
 }
 #endgame-stats-container button {
   background-color: transparent;
-  padding: 5px 30px;
+  padding: 5px 40px;
   border: 2px solid #006d77;
+  font-size: 1.7rem;
 }
 #endgame-stats-container button:hover {
   background-color: #83c5be;
@@ -168,6 +169,7 @@ main .target {
   margin-top: 10px;
   margin: 10px auto;
   border-bottom: 1px solid #83c5be;
+  font-size: 1.5rem;
 }
 #leaderboard ul li {
   list-style: none;
@@ -175,6 +177,7 @@ main .target {
   width: 90%;
   margin: 3px auto;
   text-align: center;
+  font-size: 1.25rem;
 }
 #leaderboard ul li:nth-child(odd) {
   background: #83c5be;
@@ -191,6 +194,7 @@ main .target {
   margin-top: 10px;
   margin: 10px auto;
   border-bottom: 1px solid #83c5be;
+  font-size: 1.5rem;
 }
 #endgame-stats ul {
   display: flex;
@@ -204,6 +208,7 @@ main .target {
   width: 50%;
   margin-top: 10%;
   margin-bottom: 15%;
+  font-size: 1.25rem;
 }
 #endgame-stats ul li span {
   color: #006d77;

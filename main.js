@@ -1,6 +1,6 @@
 const targetGap = 3
 let targetDiameter = 48 + targetGap;
-let targetColor = '#ff4d6d';
+let targetColor = '#24B7C2';
 let totalShots = 0;
 let targetsHit = 0;
 let scoreInt = 0;
@@ -42,6 +42,7 @@ function createAudioArray() {
             audio: new Audio('audio/firecracker.mp3'),
             isPlaying: false
         }
+        newAudioObj.audio.volume = .2;
         audioArray.push(newAudioObj)
     }
 }
@@ -161,7 +162,7 @@ var resetLocation = function(element, numOfCols, numOfRows) {
 var startGame = function() {
     const numOfCols = Math.floor((window.innerWidth * .8) / targetDiameter)
     const numOfRows = Math.floor((window.innerHeight * .9) / targetDiameter)
-
+    setDisplayToDefualt(main)
     //create 7 initial targets
     for (let i = 0; i < 7; i++) {
         const newTarget = document.createElement('div')
@@ -211,6 +212,7 @@ var resetToGameMenu = function() {
     setDisplayToNone(gameStats)
     setDisplayToDefualt(main)
     resetGameVariables()
+    setDisplayToNone(main)
 
 }
 startBtn.addEventListener('click', () => {
@@ -224,6 +226,7 @@ startBtn.addEventListener('click', () => {
 main.addEventListener('click', function (e) {
     if (inPlay) {
         totalShots += 1;
+        playTargetAudio()
         setAccuracy()
     }
 })
