@@ -20,6 +20,8 @@
     />
   </head>
   <body>
+
+    <!-- Container that is displayed when the required screen width/height is met -->
     <div id="fullscreen">
       <header class="container-fluid">
         <div class="row justify-content-center align-items-center">
@@ -32,6 +34,8 @@
           <span id="score">0</span> | <span id="accuracy">0</span>%
         </div>
       </header>
+
+      <!-- Houses Start/Target Size/Color/Time... Display is turned off upon starting game -->
       <menu>
         <div class="container-fluid" id="menu-btns">
           <div class="row">
@@ -65,8 +69,14 @@
           </div>
         </div>
       </menu>
+
+      <!-- Parent element where the target elements are appended to -->
       <main class="display-off"></main>
+
+      <!-- Countdown Element-->
       <div id="countdown" class="display-off">3</div>
+
+      <!-- Houses Leaderboard/Line Chart/Stats/Continue Btn -->
       <div id="endgame-stats-container" class="display-off">
         <div id="leaderboard">
           <header><b>LEADERBOARD</b></header>
@@ -94,10 +104,13 @@
         <button id="continue-btn">CONTINUE</button>
       </div>
     </div>
+
+    <!-- Container that is displayed when screen is too small -->
     <div id="smallerscreen">
       This Screensize is not supported. Please open application via
       desktop/laptop/Tablet
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
