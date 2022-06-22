@@ -12,7 +12,7 @@ let targetsHit = 0;
 let scoreInt = 0;
 let accuracy = 0;
 let minutes = 1;
-let seconds = '00';
+let seconds = 0;
 let inPlay = false;
 
 
@@ -120,9 +120,8 @@ var setScore = function() {
 /*
 @desc: Changes the on-screen minutes and seconds text to the variables initialized in the JS
 */
-var setMinutesAndSeconds = function() {
+var setMinutes = function() {
     minutesObj.textContent = minutes
-    secondsObj.textContent = seconds
 }
 
 /*
@@ -138,8 +137,9 @@ var setEndGameStats = function() {
 /*
 @desc: Recursive function to countdown from the initialized start time. 
 If the timer gets to 0:00 the game is stopped and the endGameStats is displayed
-Else if the seconds gets to 0... minutes decreases by 1 and seconds is set to 5
-Else decrease seconds by 1 and if seconds is less than 10, concatenate '0' to the front to preserve the timer aesthetic
+Else if the seconds gets to 0... minutes decreases by 1 and seconds is set to 59
+Else decrease seconds by 1 and if seconds is less than 10, concatenate '0' to the front of the string 
+    to preserve the timer aesthetic
 */
 var startTimer = function() {
     if (seconds === 0 && minutes === 0) {
@@ -153,6 +153,7 @@ var startTimer = function() {
             setDisplayToNone(countdown)
             main.classList.add('blur-effect')
             setTimeout(() => {
+                updateChart()
                 setDisplayToDefault(endGameStatsContainer)
                 endGameStatsContainer.classList.add('display-flex')
             }, 1000);
@@ -201,9 +202,6 @@ var startCountdownAndTimer = function() {
                 setTimeout(() => {
                     inPlay = true;
                     setDisplayToNone(countdown)
-                    seconds = 0;
-                    minutesObj.textContent = minutes;
-                    secondsObj.textContent = '00';
                     startTimer();
                 }, 1000);
             }, 1000);
@@ -280,8 +278,14 @@ var resetGameVariables = function() {
     targetsHit = 0;
     scoreInt = 0;
     accuracy = 0;
-    minutes = 1;
-    seconds = '00';
+    if (minutesSelect.value === '1') {
+        minutes = 1;
+    } else if (minutesSelect.value === '2') {
+        minutes = 2;
+    } else if (minutesSelect.value === '3') {
+        minutes = 3;
+    }
+    seconds = 0;
     inPlay = false;
     audioNum = 0;
     countdown.textContent = '3'
@@ -305,7 +309,7 @@ var resetToGameMenu = function() {
 startBtn.addEventListener('click', () => {
     setDisplayToNone(menu)
     startGame()
-    setMinutesAndSeconds()
+    setMinutes()
     startCountdownAndTimer()
     setDisplayToDefault(gameStats)
 })
@@ -319,7 +323,7 @@ main.addEventListener('click', function (e) {
 })
 
 targetSizeSelect.addEventListener("change", function () {
-    let difficulity = this.value
+    let difficulity = this.value;
     if (difficulity === 'hard') {
         targetDiameter = 28 + targetGap;
     }
@@ -354,3 +358,64 @@ for (let element of menubtns.children) {
 }
 
 continueBtn.addEventListener('click', resetToGameMenu)
+
+
+
+//CHART JS
+  const data = {
+    labels: [
+        '',
+        ''
+      ],
+    datasets: [{
+      label: 'SMALL',
+      backgroundColor: '#edc9ff',
+      borderColor: '#541388',
+      data: [],
+    }, 
+    {
+    label: 'MEDIUM',
+    backgroundColor: '#83c5be',
+    borderColor: '#b8dedc',
+    data: [],
+    },
+    {
+        label: 'LARGE',
+        backgroundColor: '#ffddd2',
+        borderColor: '#e29578',
+        data: [],
+        }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {
+        plugins:{
+            legend: {
+             position: 'bottom'
+            }
+           }
+    }
+  };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+var updateChart = function() {
+    let difficulity = targetSizeSelect.value
+    let datasetIndex;
+    if (difficulity === 'hard') {
+        datasetIndex = 0;
+    }
+    else if (difficulity === 'medium') {
+        datasetIndex = 1;
+    }
+    else if (difficulity === 'easy') {
+        datasetIndex = 2;
+    }
+    myChart.config.data.datasets[datasetIndex].data.push(scoreInt)
+    myChart.config.data.labels.push('')
+    myChart.update()
+}

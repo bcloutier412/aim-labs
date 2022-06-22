@@ -126,11 +126,20 @@ main .target {
   width: 1323px;
   flex-wrap: wrap;
 }
-#endgame-stats-container div, canvas {
+#endgame-stats-container div {
   height: 400px;
   width: 400px;
   border: 3px solid #b8dedc;
   flex-basis: 30%;
+}
+#chart b {
+  display: block;
+  text-align: center;
+  width: 50%;
+  margin-top: 10px;
+  margin: 10px auto;
+  border-bottom: 1px solid #83c5be;
+  font-size: 1.5rem;
 }
 #endgame-stats-container button {
   background-color: transparent;
