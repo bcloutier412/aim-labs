@@ -113,7 +113,7 @@ const chartDisplayArray = [
   chart3Display
 ]
 
-var setAllChartDisplayToDefault = function() {
+var setAllChartDisplayToOff = function() {
   for (let element of chartDisplayArray) {
     setDisplayToDefault(element)
     element.classList.add('display-off')
@@ -135,7 +135,7 @@ var updateChart = function () {
   let difficulity = targetSizeSelect.value;
   let datasetIndex;
   let chart;
-  setAllChartDisplayToDefault()
+  setAllChartDisplayToOff()
   if (difficulity === "hard") {
     datasetIndex = 0;
   } else if (difficulity === "medium") {
