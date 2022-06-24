@@ -6,19 +6,19 @@ const data = {
         label: "SMALL",
         backgroundColor: "#edc9ff",
         borderColor: "#541388",
-        data: [],
+        data: [0],
       },
       {
         label: "MEDIUM",
         backgroundColor: "#83c5be",
         borderColor: "#b8dedc",
-        data: [],
+        data: [0],
       },
       {
         label: "LARGE",
         backgroundColor: "#ffddd2",
         borderColor: "#e29578",
-        data: [],
+        data: [0],
       },
     ],
   };
@@ -36,6 +36,8 @@ const data = {
   };
   
   const myChart = new Chart(document.getElementById("myChart"), config);
+
+  //updates the chart with the newly finished score
   var updateChart = function () {
     let difficulity = targetSizeSelect.value;
     let datasetIndex;

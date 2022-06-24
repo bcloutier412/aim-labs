@@ -1,6 +1,7 @@
 /*
 GRID-SHOT
 @desc: 
+FOR DEMO MODE CHANGE THE INTERVAL VALUE TO SOMETHING LOWER THAN 1000: line 132ish
 */
 
 // @desc All of the game variables
@@ -15,39 +16,14 @@ let minutes = 1;
 let inPlay = false;
 
 /*
-@desc: array that holds 5 audio objects. Will be iterated through to play the shooting sound
-*/
-const audioArray = [];
-// @desc: Counter to keep track of the idex of the current audioArray iteration
-let audioNum = 0;
-createAudioArray();
-
-/*
-@desc: Due to the nature of the Audio object... 
-you must wait for the audio to end before playing again.
-This function will create 5 Audio objects to use the .play method on.
-This will eliminate the delay caused by the previous stated problem.
-*/
-function createAudioArray() {
-  for (let i = 0; i < 5; i++) {
-    const newAudioObj = {
-      audio: new Audio("audio/firecracker.mp3"),
-      isPlaying: false,
-    };
-    newAudioObj.audio.volume = 0.2;
-    audioArray.push(newAudioObj);
-  }
-}
-
-/*
-@desc: This function iterates through the "audioArray" and 
-will execute the .play() method on the audioArray[Num] Audio object.
-With every execution of this function, audioNum will increase by 1.
-Once the index has reached the end of the array, audioNum will reset to 0
+@desc: Creates an audio object and executes the .play method to play the sound
+      The reason we create an audio object is because we want to sound to play synchronously.
+      This means multiple audioobjects can be played at once.
 */
 var playTargetAudio = function () {
-  audioArray[audioNum].audio.play();
-  audioNum === 4 ? (audioNum = 0) : (audioNum += 1);
+  let audioObj = new Audio("audio/firecracker.mp3");
+  audioObj.volume = 0.2;
+  audioObj.play();
 };
 
 /*
@@ -153,7 +129,7 @@ var startTimer = function () {
         secondsElement.textContent = currentSecond;
       }
       startTimer();
-    }, 1000);
+    }, 1000); // Change this variable to speed the game up
   }
 };
 /*
