@@ -79,7 +79,7 @@
       <!-- Houses Leaderboard/Line Chart/Stats/Continue Btn -->
       <div id="endgame-stats-container" class="display-off">
         <div id="leaderboard">
-          <header><b>LEADERBOARD</b></header>
+          <header class="stat-header-text"><b>LEADERBOARD</b></header>
           <ul class="p-0">
             <li>Dino: 133474pts - 91.6%</li>
             <li>Dino: 124007pts - 97.6%</li>
@@ -91,9 +91,20 @@
             <li>Aish: 76416pts - 96.3%</li>
           </ul>
         </div>
-        <div id="chart"><b>PROGRESSION</b><canvas id="myChart" width="200" height="150"></canvas></div>
+        <div id="chart1" class="">
+          <header class="stat-header-text"><b>1 MINUTE PROGRESSION</b></header>
+          <canvas id="oneMinuteChart" width="200" height="150"></canvas>
+        </div>
+        <div id="chart2" class="">
+          <header class="stat-header-text"><b>2 MINUTE PROGRESSION</b></header>
+          <canvas id="twoMinuteChart" width="200" height="150"></canvas>
+        </div>
+        <div id="chart3" class="">
+          <header class="stat-header-text"><b>3 MINUTE PROGRESSION</b></header>
+          <canvas id="threeMinuteChart" width="200" height="150"></canvas>
+        </div>
         <div id="endgame-stats">
-          <header><b>STATS</b></header>
+          <header class="stat-header-text"><b>STATS</b></header>
           <ul class="px-0">
             <li><b>Shots: </b><span id="total-shots">0</span></li>
             <li><b>Misses: </b><span id="total-misses">0</span></li>

@@ -132,8 +132,7 @@ main .target {
   border: 3px solid #b8dedc;
   flex-basis: 30%;
 }
-#chart b {
-  display: block;
+.stat-header-text {
   text-align: center;
   width: 50%;
   margin-top: 10px;
@@ -172,14 +171,6 @@ main .target {
   border: 2px solid white; /* should match background, can't be transparent */
   background-color: rgba(0, 0, 0, .5);
 }
-#leaderboard header{
-  text-align: center;
-  width: 50%;
-  margin-top: 10px;
-  margin: 10px auto;
-  border-bottom: 1px solid #83c5be;
-  font-size: 1.5rem;
-}
 #leaderboard ul li {
   list-style: none;
   display: block;
@@ -196,14 +187,6 @@ main .target {
 }
 #endgame-stats {
   letter-spacing: 1px;
-}
-#endgame-stats header {
-  text-align: center;
-  width: 50%;
-  margin-top: 10px;
-  margin: 10px auto;
-  border-bottom: 1px solid #83c5be;
-  font-size: 1.5rem;
 }
 #endgame-stats ul {
   display: flex;
