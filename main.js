@@ -63,7 +63,7 @@ var updateAccuracy = function () {
 /*
 @desc: Calculates and changes the on-screen score text based on targetsHit/totalShots
 */
-var setScore = function () {
+var updateScore = function () {
   scoreInt += 1000 * (accuracy / 100);
   score.textContent = scoreInt;
 };
@@ -115,8 +115,8 @@ var startTimer = function () {
   } else if (currentSecond === 0) {
     setTimeout(() => {
       currentMinute -= 1;
-      minutesElement.textContent = currentMinute;
       currentSecond = 59;
+      minutesElement.textContent = currentMinute;
       secondsElement.textContent = currentSecond;
       startTimer();
     }, 1000);
@@ -129,7 +129,7 @@ var startTimer = function () {
         secondsElement.textContent = currentSecond;
       }
       startTimer();
-    }, 1000); // Change this variable to speed the game up
+    }, 10); // Change this variable to speed the game up
   }
 };
 /*
@@ -205,7 +205,7 @@ var createTargets = function () {
         totalShots += 1;
         targetsHit += 1;
         updateAccuracy();
-        setScore();
+        updateScore();
         resetLocation(this, numOfCols, numOfRows);
         e.stopPropagation();
       }

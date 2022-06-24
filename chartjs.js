@@ -6,19 +6,19 @@ const data = {
         label: "SMALL",
         backgroundColor: "#edc9ff",
         borderColor: "#541388",
-        data: [0],
+        data: [],
       },
       {
         label: "MEDIUM",
         backgroundColor: "#83c5be",
         borderColor: "#b8dedc",
-        data: [0],
+        data: [],
       },
       {
         label: "LARGE",
         backgroundColor: "#ffddd2",
         borderColor: "#e29578",
-        data: [0],
+        data: [],
       },
     ],
   };
@@ -48,6 +48,11 @@ const data = {
     } else if (difficulity === "easy") {
       datasetIndex = 2;
     }
+    //if there is no data in the dataset add a 0 to produce a line on the chart
+    if (!myChart.config.data.datasets[datasetIndex].data.length) {
+      myChart.config.data.datasets[datasetIndex].data.push(0);
+    }
+    //append the data to the dataset and push a label to the labels array so it follows the documentation
     myChart.config.data.datasets[datasetIndex].data.push(scoreInt);
     myChart.config.data.labels.push("");
     myChart.update();
