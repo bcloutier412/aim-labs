@@ -105,7 +105,7 @@ let config3 = {
 /*  
   @desc: IIFE to populate the chart.js configs with the game data taken from the local storage
 */
-(function() {
+(function initializeDataFromLocalStorage() {
   if (localStorage.getItem('isInitialized')) {
     loadConfig1 = JSON.parse(localStorage.getItem('config1'))
     loadConfig2 = JSON.parse(localStorage.getItem('config2'))
@@ -186,7 +186,7 @@ var updateChart = function () {
 };
 
 /*
-  @desc: Will update the local storage with the current game data.
+  @desc: Saves the config objects to local storage to save the game score data.
 */
 var saveToLocalStorage =function() {
   const saveConfig1 = JSON.stringify(oneMinuteChart.config);

@@ -109,6 +109,7 @@ var startTimer = function () {
         updateChart();
         setDisplayToDefault(endGameStatsContainer);
         endGameStatsContainer.classList.add("display-flex");
+        saveToLocalStorage()
       }, 1000);
     }, 1000);
     return;
@@ -306,15 +307,10 @@ minutesSelect.addEventListener("change", function () {
     minutes = 3;
   }
 });
-/*
-  @desc: Saves the config objects to local storage
-*/
-saveBtn.addEventListener('click', saveToLocalStorage) 
 
 /*
   @desc: Adds audio effect to each menu btn
 */
-
 for (let element of menubtns.children) {
   element.firstElementChild.addEventListener("mouseenter", () => {
     let audioObj = new Audio("audio/menubtn.mp3");
