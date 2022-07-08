@@ -19,3 +19,4 @@ const totalMissesStat = document.querySelector('#total-misses');
 const accuracyStat = document.querySelector('#accuracy-stat')
 const totalPointsStat = document.querySelector('#total-points')
 const continueBtn = document.querySelector('#continue-btn');
+const saveBtn = document.querySelector('#save-btn')

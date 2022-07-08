@@ -39,7 +39,7 @@
       <menu>
         <div class="container-fluid" id="menu-btns">
           <div class="row">
-            <div class="col text-center menu-btn py-2 start-btn" id="start-btn">
+            <div class="col text-center menu-btn py-2" id="start-btn">
               START
             </div>
           </div>
@@ -59,12 +59,17 @@
             </div>
           </div>
           <div class="row">
-            <div class="col text-center menu-btn time-btn py-2" id="time-btn">
+            <div class="col text-center menu-btn py-2" id="time-btn">
               <select name="" id="minutes-select">
                 <option value="1">1 MINUTE</option>
                 <option value="2">2 MINUTES</option>
                 <option value="3">3 MINUTES</option>
               </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-center menu-btn py-2" id="save-btn">
+              SAVE GAME
             </div>
           </div>
         </div>
@@ -91,6 +96,7 @@
             <li>Aish: 76416pts - 96.3%</li>
           </ul>
         </div>
+        <!-- Three Charts that we will manipulate the display off  -->
         <div id="chart1" class="">
           <header class="stat-header-text"><b>1 MINUTE PROGRESSION</b></header>
           <canvas id="oneMinuteChart" width="200" height="150"></canvas>
@@ -103,6 +109,7 @@
           <header class="stat-header-text"><b>3 MINUTE PROGRESSION</b></header>
           <canvas id="threeMinuteChart" width="200" height="150"></canvas>
         </div>
+
         <div id="endgame-stats">
           <header class="stat-header-text"><b>STATS</b></header>
           <ul class="px-0">
