@@ -130,7 +130,7 @@ var startTimer = function () {
         secondsElement.textContent = currentSecond;
       }
       startTimer();
-    }, 1000); // Change this variable to speed the game up
+    }, 10); // Change this variable to speed the game up
   }
 };
 /*
@@ -320,3 +320,9 @@ for (let element of menubtns.children) {
 }
 
 continueBtn.addEventListener("click", resetToGameMenu);
+
+//Clears the localStorage and reloads the game
+clearDataBtn.addEventListener('click', () => {
+  window.localStorage.clear()
+  window.location.reload()
+})
