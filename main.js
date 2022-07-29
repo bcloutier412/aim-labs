@@ -109,6 +109,7 @@ var startTimer = function () {
         updateChart();
         setDisplayToDefault(endGameStatsContainer);
         endGameStatsContainer.classList.add("display-flex");
+        saveToLocalStorage()
       }, 1000);
     }, 1000);
     return;
@@ -129,7 +130,11 @@ var startTimer = function () {
         secondsElement.textContent = currentSecond;
       }
       startTimer();
+<<<<<<< HEAD
     }, 1000) // Change this variable to speed the game up
+=======
+    }, 10); // Change this variable to speed the game up
+>>>>>>> 5643448045dc98254db2bfb26dfe8c8aed996584
   }
 };
 /*
@@ -275,6 +280,9 @@ main.addEventListener("click", function (e) {
   }
 });
 
+/*
+  @desc: Changes the size of the target
+*/
 targetSizeSelect.addEventListener("change", function () {
   let difficulity = this.value;
   if (difficulity === "hard") {
@@ -286,10 +294,16 @@ targetSizeSelect.addEventListener("change", function () {
   }
 });
 
+/*
+  @desc: Changes the color of the targets
+*/
 colorPicker.addEventListener("input", () => {
   targetColor = colorPicker.value;
 });
 
+/*
+  @desc: Updates the amount of minutes the game will last for.
+*/
 minutesSelect.addEventListener("change", function () {
   if (this.value === "1") {
     minutes = 1;
@@ -300,7 +314,9 @@ minutesSelect.addEventListener("change", function () {
   }
 });
 
-//Adds audio effect to the menu btns
+/*
+  @desc: Adds audio effect to each menu btn
+*/
 for (let element of menubtns.children) {
   element.firstElementChild.addEventListener("mouseenter", () => {
     let audioObj = new Audio("audio/menubtn.mp3");
@@ -310,3 +326,9 @@ for (let element of menubtns.children) {
 }
 
 continueBtn.addEventListener("click", resetToGameMenu);
+
+//Clears the localStorage and reloads the game
+clearDataBtn.addEventListener('click', () => {
+  window.localStorage.clear()
+  window.location.reload()
+})
