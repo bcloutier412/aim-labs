@@ -48,7 +48,7 @@ compatible with the screensize)
 @param: num = intended to be the highest integer of rows or columns compatible with the screensize... number)
 */
 var getRandomNum = function (num) {
-  return Math.floor(Math.random() * (num - 0)) + 0;
+  return Math.floor(Math.random() * num);
 };
 
 /*
@@ -69,14 +69,14 @@ var updateScore = function () {
 };
 
 /*
-@desc: Changes the on-screen minutes text to the variables initialized in the JS
+@desc: Syncs the on-screen minutes text to the variables initialized in the JS
 */
 var setMinutes = function () {
   minutesElement.textContent = minutes;
 };
 
 /*
-@desc: Matches the on-screen endgame stats text to JS variables
+@desc: Syncs the on-screen endgame stats text to JS variables
 */
 var setEndGameStats = function () {
   totalShotsStat.textContent = totalShots;
@@ -129,7 +129,7 @@ var startTimer = function () {
         secondsElement.textContent = currentSecond;
       }
       startTimer();
-    }, 1000); // Change this variable to speed the game up
+    }, 1000) // Change this variable to speed the game up
   }
 };
 /*
@@ -211,6 +211,8 @@ var createTargets = function () {
       }
     });
     main.appendChild(newTarget);
+
+
   }
 };
 
