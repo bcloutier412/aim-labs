@@ -130,11 +130,7 @@ var startTimer = function () {
         secondsElement.textContent = currentSecond;
       }
       startTimer();
-<<<<<<< HEAD
     }, 1000) // Change this variable to speed the game up
-=======
-    }, 10); // Change this variable to speed the game up
->>>>>>> 5643448045dc98254db2bfb26dfe8c8aed996584
   }
 };
 /*
